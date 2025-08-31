@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor de Medidas</title>
+  <link rel="stylesheet" href="conversor.css">
+</head>
+<body>
+  <h1>📏 Conversor de Medidas</h1>
+
+  <div class="box">
+    <label>Valor:</label>
+    <input type="number" id="valor" placeholder="Digite um número">
+
+    <label>De:</label>
+    <select id="de" onchange="atualizarOpcoes()">
+      <option value="m">Metros</option>
+      <option value="cm">Centímetros</option>
+      <option value="km">Quilômetros</option>
+      <option value="mm">Milímetros</option>
+      <option value="kg">Quilos</option>
+      <option value="g">Gramas</option>
+      <option value="mg">Miligramas</option>
+      <option value="t">Toneladas</option>
+    </select>
+
+    <label>Para:</label>
+    <select id="para"></select>
+
+    <button onclick="converter()">Converter</button>
+
+    <h2 id="resultado">Resultado: -</h2>
+  </div>
+
+  <div class="voltar">
+
+    <a href="../index.html">  
+        <input type="button" id="voltar-btn" value="Voltar">  
+    </a>
+
+  </div>
+
+  <script>
+    const categorias = {
+      comprimento: ["m", "cm", "km", "mm"],
+      massa: ["kg", "g", "mg", "t"]
+    };
+
+    // nomes bonitinhos
+    const nomes = {
+      m: "Metros", cm: "Centímetros", km: "Quilômetros", mm: "Milímetros",
+      kg: "Quilos", g: "Gramas", mg: "Miligramas", t: "Toneladas"
+    };
+
+    // qual unidade pertence a qual categoria
+    function categoriaUnidade(u) {
+      if (categorias.comprimento.includes(u)) return "comprimento";
+      if (categorias.massa.includes(u)) return "massa";
+      return null;
+    }
+
+    function atualizarOpcoes() {
+      let de = document.getElementById("de").value;
+      let categoria = categoriaUnidade(de);
+      let paraSelect = document.getElementById("para");
+
+      // limpa opções
+      paraSelect.innerHTML = "";
+
+      categorias[categoria].forEach(unidade => {
+        if (unidade !== de) {
+          let opt = document.createElement("option");
+          opt.value = unidade;
+          opt.textContent = nomes[unidade];
+          paraSelect.appendChild(opt);
+        }
+      });
+    }
+
+    function converter() {
+      let valor = parseFloat(document.getElementById("valor").value);
+      let de = document.getElementById("de").value;
+      let para = document.getElementById("para").value;
+      let resultado = 0;
+
+      if (isNaN(valor)) {
+        document.getElementById("resultado").innerText = "Digite um valor válido!";
+        return;
+      }
+
+      // --- COMPRIMENTO ---
+      if (categoriaUnidade(de) === "comprimento") {
+        // converte tudo para metros primeiro
+        let emMetros = valor;
+        if (de === "cm") emMetros = valor / 100;
+        else if (de === "km") emMetros = valor * 1000;
+        else if (de === "mm") emMetros = valor / 1000;
+
+        // depois converte de metros para destino
+        if (para === "cm") resultado = emMetros * 100;
+        else if (para === "km") resultado = emMetros / 1000;
+        else if (para === "mm") resultado = emMetros * 1000;
+        else resultado = emMetros; // metros mesmo
+      }
+
+      // --- MASSA ---
+      if (categoriaUnidade(de) === "massa") {
+        // converte tudo para gramas
+        let emGramas = valor;
+        if (de === "kg") emGramas = valor * 1000;
+        else if (de === "mg") emGramas = valor / 1000;
+        else if (de === "t") emGramas = valor * 1000000;
+
+        // depois converte para destino
+        if (para === "kg") resultado = emGramas / 1000;
+        else if (para === "mg") resultado = emGramas * 1000;
+        else if (para === "t") resultado = emGramas / 1000000;
+        else resultado = emGramas; // gramas
+      }
+
+      document.getElementById("resultado").innerText = 
+        `Resultado: ${resultado} ${nomes[para]}`;
+    }
+
+    // inicializa as opções
+    atualizarOpcoes();
+  </script>
+</body>
+</html>

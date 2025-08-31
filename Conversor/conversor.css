@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  padding-bottom: 20px;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  margin: auto;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #aaa;
+}
+
+#valor{
+  padding: 10px;
+  max-width: 380px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input, select, button {
+  margin-top: 5px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #333;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+button:hover {
+  background: #555;
+}
+
+#resultado {
+  margin-top: 20px;
+  color: #006600;
+}
+
+.voltar{
+  padding: 20px;
+  font-size: 20px;
+}
+
+#voltar-btn{
+  background-color: #333;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+}
+
+#voltar-btn:hover{
+  background-color:#555;
+}
