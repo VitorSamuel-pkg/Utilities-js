@@ -7,7 +7,18 @@
   <link rel="stylesheet" href="conversor.css">
 </head>
 <body>
-  <h1>📏 Conversor de Medidas</h1>
+
+  <div class="faixa-topo">
+    📏 Conversor de Medidas
+  </div>
+
+  <div class="voltar">
+
+    <a href="../index.html">  
+        <input type="image" id="voltar-btn" src="../imgs/de-volta.png"> 
+    </a>
+
+  </div>
 
   <div class="box">
     <label>Valor:</label>
@@ -31,14 +42,6 @@
     <button onclick="converter()">Converter</button>
 
     <h2 id="resultado">Resultado: -</h2>
-  </div>
-
-  <div class="voltar">
-
-    <a href="../index.html">  
-        <input type="button" id="voltar-btn" value="Voltar">  
-    </a>
-
   </div>
 
   <script>
