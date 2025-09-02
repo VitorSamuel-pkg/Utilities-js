@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Bhaskara</title>
+  <link rel="stylesheet" href="bhaskara.css">
+
+  <body>
+  <div class="box">
+    <h1>Bhaskara</h1>
+    <label for="a">Valor de A:</label>
+    <input type="number" id="a" placeholder="Digite A">
+    
+    <label for="b">Valor de B:</label>
+    <input type="number" id="b" placeholder="Digite B">
+    
+    <label for="c">Valor de C:</label>
+    <input type="number" id="c" placeholder="Digite C">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div class="resultado" id="resultado">Resultado: -</div>
+  </div>
+
+  <script>
+    function calcular() {
+      let a = parseFloat(document.getElementById('a').value);
+      let b = parseFloat(document.getElementById('b').value);
+      let c = parseFloat(document.getElementById('c').value);
+
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        document.getElementById('resultado').innerHTML = "Preencha todos os valores!";
+        return;
+      }
+
+      let delta = (b*b) - (4*a*c);
+
+      if (delta < 0) {
+        document.getElementById('resultado').innerHTML = "Delta < 0 → não existem raízes reais.";
+      } else {
+        let x1 = (-b + Math.sqrt(delta)) / (2*a);
+        let x2 = (-b - Math.sqrt(delta)) / (2*a);
+
+        document.getElementById('resultado').innerHTML = 
+          `Δ = ${delta} <br> x₁ = ${x1.toFixed(2)} <br> x₂ = ${x2.toFixed(2)}`;
+      }
+    }
+  </script>
+</body>
+</html>
