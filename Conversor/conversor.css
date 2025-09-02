@@ -1,15 +1,15 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background: #f4f4f4;
-  margin: 0;
+  background: #1e1e2e;
+  margin: 0px;
   padding: 0px;
 }
 
 .faixa-topo{
   margin: 0;
-  background-color: #cfcfcf; /* cor de fundo da faixa */
-  color: black;           /* cor do texto */
+  background-color: #2d333b; /* cor de fundo da faixa */
+  color: #f0f6fc;           /* cor do texto */
   padding: 15px;
   text-align: center;
   font-size: 32px;
@@ -17,7 +17,7 @@ body {
   position: relative; /* posição normal (não fixa) */
   width: 100%;
   box-sizing: border-box;
-  box-shadow: 0px 5px 10px rgb(102, 102, 102);
+  box-shadow: 0px 5px 10px #22272e;
 }
 
 .voltar {
@@ -39,17 +39,18 @@ body {
 }
 
 #voltar-btn:hover {
-  background-color: #cfcfcf;
+  background-color: #cfcfcf0a;
   border-radius: 100%;
 }
 
 .box {
-  background: white;
-  padding: 20px;
-  margin: 20px;
-  max-width: 400px;
+  background: #2e3440;
+  padding: 25px;
+  max-width: 300px;
   border-radius: 10px;
-  box-shadow: 0 0 10px #aaa;
+  box-shadow: 0 0 10px #2e3440;
+  margin: auto;
+  color: #d8dee9;
 }
 
 #valor {
@@ -74,18 +75,20 @@ button {
 }
 
 button {
-  background: #333;
+  background: #257de0;
   color: white;
   cursor: pointer;
   margin-top: 15px;
   font-size: 18px;
+  border: none;
 }
 
 button:hover {
-  background: #555;
+  background: #15559e;
+  border: none;
 }
 
 #resultado {
   margin-top: 20px;
-  color: #006600;
+  color: #34d399;
 }
